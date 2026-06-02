@@ -1,0 +1,105 @@
+version: '3.8'
+
+services:
+  # Microservices
+  user-service:
+    build: ./microservices/user-service
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+    volumes:
+      - ./microservices/user-service:/app
+    command: gunicorn --bind 0.0.0.0:5000 app:app
+
+  order-service:
+    build: ./microservices/order-service
+    ports:
+      - "5001:5001"
+    environment:
+      - FLASK_ENV=development
+    volumes:
+      - ./microservices/order-service:/app
+    command: gunicorn --bind 0.0.0.0:5001 app:app
+
+  payment-service:
+    build: ./microservices/payment-service
+    ports:
+      - "5002:5002"
+    environment:
+      - FLASK_ENV=development
+    volumes:
+      - ./microservices/payment-service:/app
+    command: gunicorn --bind 0.0.0.0:5002 app:app
+
+  notification-service:
+    build: ./microservices/notification-service
+    ports:
+      - "5003:5003"
+    environment:
+      - FLASK_ENV=development
+    volumes:
+      - ./microservices/notification-service:/app
+    command: gunicorn --bind 0.0.0.0:5003 app:app
+
+  # Observability Stack
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./observability/prometheus:/etc/prometheus
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./observability/grafana:/var/lib/grafana
+      - ./observability/grafana/provisioning:/etc/grafana/provisioning
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.25
+    ports:
+      - "5775:5775/udp"
+      - "16686:16686"
+      - "14268:14268"
+      - "14250:14250"
+      - "9411:9411"
+
+  loki:
+    image: grafana/loki:2.5.0
+    ports:
+      - "3100:3100"
+    volumes:
+      - ./observability/loki:/etc/loki
+    command: -config.file=/etc/loki/local-config.yaml
+
+  promtail:
+    image: grafana/promtail:2.5.0
+    volumes:
+      - ./observability/promtail:/etc/promtail
+      - /var/log:/var/log:ro
+    command: -config.file=/etc/promtail/config.yaml
+
+  alertmanager:
+    image: prom/alertmanager:latest
+    ports:
+      - "9093:9093"
+    volumes:
+      - ./observability/alertmanager:/etc/alertmanager
+    command:
+      - '-config.file=/etc/alertmanager/config.yml'
+      - '-storage.path=/alertmanager'
+
+volumes:
+  prometheus_data:
