@@ -1,0 +1,84 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "Loki Logs Overview",
+    "tags": ["loki", "logs"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "5s",
+    "panels": [
+      {
+        "type": "logs",
+        "title": "System Logs",
+        "gridPos": {"x": 0, "y": 0, "w": 24, "h": 9},
+        "datasource": "Loki",
+        "targets": [
+          {
+            "expr": "{job=\"varlogs\"}",
+            "refId": "A",
+            "legendFormat": "{{filename}}"
+          }
+        ],
+        "options": {
+          "showLabels": true,
+          "sortOrder": "Descending",
+          "wrapLogMessage": false,
+          "prettifyLogMessage": false,
+          "enableLogDetails": true,
+          "dedupStrategy": "none"
+        }
+      },
+      {
+        "type": "logs",
+        "title": "Error Logs",
+        "gridPos": {"x": 0, "y": 9, "w": 24, "h": 9},
+        "datasource": "Loki",
+        "targets": [
+          {
+            "expr": "{job=\"varlogs\"} |= \"error\"",
+            "refId": "A",
+            "legendFormat": "{{filename}}"
+          }
+        ],
+        "options": {
+          "showLabels": true,
+          "sortOrder": "Descending",
+          "wrapLogMessage": false,
+          "prettifyLogMessage": false,
+          "enableLogDetails": true,
+          "dedupStrategy": "none"
+        }
+      },
+      {
+        "type": "stat",
+        "title": "Log Count (Last 5m)",
+        "gridPos": {"x": 0, "y": 18, "w": 8, "h": 4},
+        "datasource": "Loki",
+        "targets": [
+          {
+            "expr": "count_over_time({job=\"varlogs\"}[5m])",
+            "refId": "A",
+            "legendFormat": "{{job}}"
+          }
+        ],
+        "options": {
+          "reduceOptions": {
+            "values": false,
+            "calcs": ["lastNotNull"],
+            "fields": ""
+          },
+          "orientation": "auto",
+          "textMode": "value"
+        }
+      }
+    ],
+    "templating": {
+      "list": []
+    },
+    "annotations": {
+      "list": []
+    }
+  },
+  "overwrite": true
+}

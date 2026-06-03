@@ -1,0 +1,19 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "Test Dashboard",
+    "tags": ["test"],
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "5s",
+    "panels": [],
+    "templating": {
+      "list": []
+    },
+    "annotations": {
+      "list": []
+    }
+  },
+  "overwrite": true
+}

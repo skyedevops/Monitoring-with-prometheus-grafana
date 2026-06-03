@@ -1,0 +1,54 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+{
+  "manifestVersion": "2.0.0",
+  "signatureType": "grafana",
+  "signedByOrg": "grafana",
+  "signedByOrgName": "Grafana Labs",
+  "plugin": "aws-datasource-provisioner-app",
+  "version": "1.13.11",
+  "time": 1773074856767,
+  "keyId": "7e4d0c6a708866e7",
+  "files": {
+    "assets/cloudwatch-dark.svg": "4146a212eb0bf3a349a45a2889b7bb4ab17f87273f383080312f415147a43b9a",
+    "assets/aws.svg": "1663c00caba1c6751cc47533bd5c6b990822b34d758234d421ea63868dcae999",
+    "assets/athena-dark.svg": "36b8444ceb256c4b5e6e68364e1ea8fafb48213bf3158961200a2698e28b6f2b",
+    "assets/redshift-light.svg": "01c1cf6ba031065a1ff3aec42925f073365c242b7a98eb0a92b256045c4a61ce",
+    "assets/athena-light.svg": "b6102f13fda3216071cf6ec3f7c4189f2185384ef9c75f87223f0a6289eb882f",
+    "assets/timestream-dark.svg": "d089878140528dcd1349fb5b70b5b5a4bbeb82f58b87826782f427f576be78f7",
+    "assets/sitewise-light.svg": "ca70b9ac04ec0f6bb7019b6f9cfe42680913fba45596ed3b27751f30d7f751d1",
+    "assets/cloudwatch-light.svg": "4146a212eb0bf3a349a45a2889b7bb4ab17f87273f383080312f415147a43b9a",
+    "assets/prometheus-light.svg": "607d760405d013deefb4f374f01b83b31a93cb1c25ff0af4d8c57a48dcd3880d",
+    "assets/logo-small.svg": "f97b7df7cca4fead2ac0059d96120aac13b544bd5c96c99f3caa812ae1a14650",
+    "assets/xray-light.svg": "c9d405899c953b298be86317ffa3a3e2883bdbd70a746f149ae6af7d70969cbc",
+    "assets/opensearch-dark.svg": "11f5ad4ec8ea0c8c07eb5640d052fd2bf1cbad2e55bc729ba0725a0fe1b17843",
+    "assets/redshift-dark.svg": "3fab12a90e8ae2e871aa8599848afd901ab1a929c182f24579b2bb1668e1fb39",
+    "assets/logo-large.svg": "6cdfcefcd03b46c120fe63222e1a9514c0292b7672b7f5de99f22f39810ca22d",
+    "assets/opensearch-light.svg": "86b3660943a4a84c760b1ddd2ebc0c68fce8461701b7ff42170e1cba43c3c67e",
+    "assets/twinmaker-dark.svg": "529815bc6f9f5590d640d6bb0733cc5502e0dc86be2fddc7adae9d9e81a25c0d",
+    "assets/prometheus-dark.svg": "ad09d575bd0c0803c6c597b514f68d9948e6bf9a0ce51d58449f26efdaa59c9f",
+    "assets/sitewise-dark.svg": "ca70b9ac04ec0f6bb7019b6f9cfe42680913fba45596ed3b27751f30d7f751d1",
+    "assets/timestream-light.svg": "d089878140528dcd1349fb5b70b5b5a4bbeb82f58b87826782f427f576be78f7",
+    "assets/twinmaker-light.svg": "c99d06a6ab5d48325c33f8b18b70fdd3b7391d1ed61b6663d2c996589363a842",
+    "assets/xray-dark.svg": "7d70c3380cf28ed5ac0727d1fa63df877f38781dcc588ff15906e79f6d077f47",
+    "module.js.map": "dbfe18a30f2dbc023ea6b3d990fd66eea68116199c30a1ed1f4c37ee0e461d65",
+    "README.md": "a2ad1a777fc6d7423c13df9d2f7cfb5bde496e0f9eac6fb28f6ed0e207109ba3",
+    "plugin.json": "8108f74cea78e28e6c1cdfcf330c1830eed59e7e216bf850ac8ce062db55001b",
+    "module.js": "9619645d2e0e0a846522d807388849f138e71803950330ae2f94854eabde980a",
+    "CHANGELOG.md": "356111fbd9c3f9b8392ccc4050a787629152d317aab156264a45553528140a60",
+    "gpx_AWS_Datasource_Provisioner_linux_amd64": "5f9590e20f3b145e3eb811772ff215aed5974da54e7f0da1d8a7fecb9fa1f3fa",
+    "go_plugin_build_manifest": "0fb39d34f12e873886431cb20771564cb3e6a130c242d1abbf95437ca82b4468",
+    "LICENSE": "4888d189928f1ea92a3e0f3d44821c53f314ac098be907a8e13e5e909fc0a03a"
+  }
+}
+-----BEGIN PGP SIGNATURE-----
+
+wsA/BAETCgBtBYJprvmoCRB+TQxqcIhm50UUAAAAAAAcACBzYWx0QG5vdGF0
+aW9ucy5vcGVucGdwanMub3JnHXq8lqmbZmrUs8Si/AOHx55Fg7Ps+RT/wpsb
+egPZOLMWIQTzOyW2kQdOhGNlcPN+TQxqcIhm5wAAAZACCQFTw6dkTcLKjeNM
+coWZYWCzNzL7ZkRJbWHu7qaypOqDCGX+RXLzVvRyacSq32S0za/xykDDYwXG
+FfO2KS6+SEEIAQIJAUCSGVgTeICUJ+P+k76/dxbd74IhG9tpX5l9NpUK9Elk
+SqV6AS49gM42RLcrNJIugWAQqgLDRe2hPo7yfUaTT/sP
+=P4As
+-----END PGP SIGNATURE-----

@@ -1,0 +1,60 @@
+{
+    "type": "app",
+    "name": "AWS Data Sources",
+    "id": "aws-datasource-provisioner-app",
+    "backend": true,
+    "executable": "gpx_AWS_Datasource_Provisioner",
+    "routes": [],
+    "info": {
+        "description": "AWS Datasource Provisioner",
+        "keywords": [
+            "application",
+            "aws",
+            "amazon",
+            "provisioner"
+        ],
+        "author": {
+            "name": "Grafana Labs",
+            "url": "https://grafana.com/"
+        },
+        "logos": {
+            "small": "assets/logo-small.svg",
+            "large": "assets/logo-large.svg"
+        },
+        "links": [],
+        "version": "1.13.11",
+        "updated": "2026-03-09"
+    },
+    "includes": [
+        {
+            "type": "page",
+            "icon": "cube",
+            "name": "AWS services",
+            "path": "/a/aws-datasource-provisioner-app/?tab=services",
+            "addToNav": true,
+            "defaultNav": true,
+            "role": "Admin"
+        },
+        {
+            "type": "page",
+            "icon": "database",
+            "name": "Data sources",
+            "path": "/a/aws-datasource-provisioner-app/?tab=datasources",
+            "addToNav": true,
+            "role": "Admin"
+        },
+        {
+            "type": "page",
+            "icon": "sliders-v-alt",
+            "name": "Settings",
+            "path": "/a/aws-datasource-provisioner-app/?tab=settings",
+            "addToNav": true,
+            "role": "Admin"
+        }
+    ],
+    "dependencies": {
+        "grafanaVersion": "10.4.x",
+        "grafanaDependency": ">=10.4.x"
+    },
+    "buildMode": "production"
+}

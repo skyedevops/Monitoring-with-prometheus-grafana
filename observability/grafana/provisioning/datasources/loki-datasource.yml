@@ -1,0 +1,19 @@
+apiVersion: 1
+
+datasources:
+  - name: Loki
+    type: loki
+    access: proxy
+    url: http://loki:3100
+    isDefault: false
+    editable: false
+    jsonData:
+      derivedFields:
+        - datasourceUid: uid
+          matcherRegex: 'traceID=(?P<traceID>[a-zA-Z0-9]+)'
+          name: TraceID
+          url: http://jaeger:16686/trace/${__value}
+        - datasourceUid: uid
+          matcherRegex: 'spanID=(?P<spanID>[a-zA-Z0-9]+)'
+          name: SpanID
+          url: http://jaeger:16686/trace/${__value}
