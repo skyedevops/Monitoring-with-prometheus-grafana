@@ -1,20 +1,18 @@
 from flask import Flask, jsonify, request
-from prometheus_flask_exporter import PrometheusMetrics
+from prometheus_client import Counter, Histogram, generate_latest
 import random
 import time
 
 app = Flask(__name__)
-metrics = PrometheusMetrics(app)
 
 # Custom metrics
-PAYMENTS_PROCESSED = metrics.counter(
+PAYMENTS_PROCESSED = Counter(
     'payments_processed_total', 'Number of payments processed',
-    labels={'status': lambda r: 'success' if r.status_code < 400 else 'error',
-            'method': lambda r: r.args.get('method', 'unknown')}
+    ['status', 'method']
 )
 
-PAYMENT_PROCESSING_TIME = metrics.histogram(
-    'payment_processing_duration_seconds', 'Time spent processing payments',
+PAYMENT_PROCESSING_TIME = Histogram(
+    'payment_processing_seconds', 'Time spent processing payments',
     buckets=(0.1, 0.5, 1.0, 2.0, 5.0)
 )
 
@@ -24,6 +22,10 @@ PAYMENT_METHODS = ['credit_card', 'paypal', 'bank_transfer', 'crypto']
 @app.route('/health')
 def health():
     return jsonify({'status': 'healthy'}), 200
+
+@app.route('/metrics')
+def metrics():
+    return generate_latest(), 200, {'Content-Type': 'text/plain'}
 
 @app.route('/process', methods=['POST'])
 def process_payment():

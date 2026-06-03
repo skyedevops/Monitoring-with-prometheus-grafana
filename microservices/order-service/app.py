@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 from prometheus_flask_exporter import PrometheusMetrics
+from prometheus_client import Counter, Histogram
 import random
 import time
 import threading
@@ -8,12 +9,12 @@ app = Flask(__name__)
 metrics = PrometheusMetrics(app)
 
 # Custom metrics
-ORDERS_CREATED = metrics.counter(
+ORDERS_CREATED = Counter(
     'orders_created_total', 'Number of orders created',
-    labels={'status': lambda r: 'success' if r.status_code < 400 else 'error'}
+    ['status']
 )
 
-ORDER_PROCESSING_TIME = metrics.histogram(
+ORDER_PROCESSING_TIME = Histogram(
     'order_processing_duration_seconds', 'Time spent processing orders',
     buckets=(0.1, 0.5, 1.0, 2.0, 5.0)
 )
@@ -31,7 +32,6 @@ def health():
     return jsonify({'status': 'healthy'}), 200
 
 @app.route('/orders', methods=['POST'])
-@ORDERS_CREATED
 def create_order():
     start_time = time.time()
     
@@ -59,7 +59,8 @@ def create_order():
     thread.daemon = True
     thread.start()
     
-    # Record processing time
+    # Record metrics
+    ORDERS_CREATED.labels(status='success').inc()
     ORDER_PROCESSING_TIME.observe(time.time() - start_time)
     
     return jsonify(order), 201
