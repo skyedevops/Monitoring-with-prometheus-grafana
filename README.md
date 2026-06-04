@@ -217,6 +217,32 @@ To expose metrics from your Flask services:
 - Check what's using the port: `sudo lsof -i :3000`
 - Either stop the conflicting service or change the port in docker-compose.yml
 
+## Kubernetes Deployment
+
+The `infrastructure/kubernetes/monitoring/` directory contains Kubernetes manifests for deploying the observability stack:
+
+### Files:
+- `namespace.yaml`: Creates the `monitoring` namespace
+- `loki-configmap.yaml`: Loki configuration as a ConfigMap
+- `loki-deployment.yaml`: Loki Deployment and Service
+- `prometheus-configmap.yaml`: Prometheus configuration
+
+### To Deploy:
+```bash
+kubectl apply -f infrastructure/kubernetes/monitoring/
+```
+
+### Notes:
+1. The Kubernetes manifests are configured for a basic Loki deployment
+2. For production use, you may want to:
+   - Add persistence with PersistentVolumes
+   - Configure proper storage (S3, GCS, etc.) for Loki
+   - Add resource limits and requests
+   - Configure alerting rules
+   - Set up proper authentication and TLS
+
+The Docker Compose setup in the root directory remains the primary method for local development and testing.
+
 ## Maintenance
 
 ### Viewing Logs
