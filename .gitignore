@@ -1,0 +1,13 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+
+# Logs
+*.log
+
+# Terraform variables file (if we commit an example, we don't want to commit actual values)
+# variables.tfvars
+
+# AWS CLI credentials
+.aws/
