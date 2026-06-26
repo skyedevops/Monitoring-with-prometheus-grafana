@@ -20,7 +20,7 @@ In a microservices environment, a single user request can traverse five differen
 ### 🏗️ Architecture Overview
 The system implements a decoupled telemetry pipeline where each component handles a specific type of data:
 
-![Observability Architecture](assets/grafana-dashboard.png)
+![Observability Architecture](assets/grafana-dashboard.svg)
 
 ### 🎯 Key Engineering Decisions
 
